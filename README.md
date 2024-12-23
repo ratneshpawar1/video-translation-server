@@ -91,13 +91,11 @@ If you want to integrate this into your own code, here’s the **basic pattern**
 const VideoTranslationClient = require('./client');
 
 const client = new VideoTranslationClient('http://localhost:3000', {
-  maxAttempts: 5,          // Maximum times to poll
-  initialDelay: 1000,      // Start with 1 second between polls
-  maxDurationMs: 30000,    // Don't go beyond 30 seconds overall
+  maxAttempts: 5,         
+  initialDelay: 1000,     
+  maxDurationMs: 30000,    
   token: 'your-secure-token', // Optional Bearer token if the server requires auth
   pollingStrategy: (attempt, prevDelay, serverHint) => {
-    // You can adapt how the delay changes each time,
-    // for example, a simple exponential approach:
     return prevDelay * 2;
   }
 });
